@@ -1,0 +1,130 @@
+body {
+  overflow-x: hidden;
+  font-family: monospace;
+  margin: 0;
+}
+
+
+.header {
+  position: relative;
+  height: 100px;
+  background-color: white;
+  text-align: center;
+  left: 1%;
+  right: 1%;
+  width: 100%;
+  left: 0;
+}
+header:hover {
+  transition: 0.3s;
+  background-color: #a6a6a6;
+  color: white;
+}
+
+.header h1 {
+  top: 20px;
+  position: relative;
+  font-weight: bold;
+  letter-spacing: 5px;
+  margin: 0;
+}
+.header span {
+  position: relative;
+  top: 25px;
+  color: #454545;
+}
+.header a {
+  color: inherit;
+}
+
+#choropleth_button {
+  position: relative;
+  font-family: monospace;
+  color: #454545;
+  background-color: white;
+  border-radius: 0;
+  border-color: #454545;
+  border: solid;
+  border-width: 2px;
+  width: 300px;
+  height: 40px;
+  float: right;
+}
+#choropleth_button:hover {
+  transition: 0.15s;
+  background-color: #454545;
+  border-color: #454545;
+  color: white;
+}
+
+#margins {
+  color: #454545;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.main {
+  position: relative;
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+  max-width: 1000px;
+  padding-top: 0;
+  line-height: 30px;
+  font-size: 20px;
+}
+
+
+.extra-info {
+  position: relative;
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+  max-width: 1000px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.extra-info span {
+  margin: 0 70px 0 70px;
+}
+.extra-info a {
+  color: #454545;
+}
+
+
+#map_container {
+  margin: auto;
+  padding: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  position: relative;
+  width: 1200px;
+  left: 1%;
+  right: 1%;
+  top: 0;
+}
+
+/* SVG ELEMENTS */
+.district {
+  stroke-width: 0.2px;
+  stroke: white;
+}
+
+.hawaii {
+  transform: translate(400px, 000px) scale(1) rotate(0.91turn);
+}
+
+#Alaska {
+  transform: translate(350px, 650px) scale(0.45) rotate(0.91turn);
+}
+
+/* PARTIES */
+.democratic {
+  fill: #003399;
+  background-color: #003399;
+}
+
+.republican {
+  fill: #cc0000;
+  background-color: #cc0000;
+}
