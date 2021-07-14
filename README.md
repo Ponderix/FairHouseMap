@@ -14,4 +14,4 @@ Map made with [Dave's Redistricting](https://davesredistricting.org/maps#home).
 
 
 ## Conditions Notice
-All views expressed statements and made are those of the owner, in no way should they be seen as information given by an expert on this issue. By no means is the map proffesionally made either, and it should be noted that they are drawn by an novice mapper purely for entertainement purpouses.
+All views expressed and statements made are those of the owner, in no way should they be seen as information given by an expert on this subject. By no means is the map proffesionally made either, and it should be noted that they are drawn by an novice mapper purely for entertainement purpouses.
