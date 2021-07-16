@@ -1,11 +1,23 @@
-var container = d3.select("#map_container");
+var mapContainer = d3.select("#map_container");
+var chartContainer = d3.select("#chart_container");
+var seatCounter = d3.select("#seat_counter");
+
 var choroButton = d3.select("#choropleth_button");
-var svg = container.append("svg")
+var marginsContent = d3.select("#margins_content");
+
+var mapSvg = mapContainer.append("svg")
   .attr("width", 1200)
   .attr("height", 600)
   .attr("id", "usa");
-var g = svg.append("g")
-  .attr("id", "boundaries")
+var map = mapSvg.append("g")
+  .attr("id", "boundaries");
+
+var chartSvg = chartContainer.append("svg")
+  .attr("width", 1000)
+  .attr("height", 100)
+  .attr("id", "chart");
+var graph = chartSvg.append("g")
+  .attr("id", "graph");
 
 
 var projection = d3.geoMercator()
@@ -18,46 +30,67 @@ var path = d3.geoPath()
 
 function zoomed(event) {
   var transform = event.transform;
-  g.attr("transform", transform.toString());
+  map.attr("transform", transform.toString());
 }
 var zoom = d3.zoom()
   .scaleExtent([0.7, 60])
   .on("zoom", zoomed);
-svg.call(zoom).on("dblclick.zoom", null);
+mapSvg.call(zoom).on("dblclick.zoom", null);
 
 
 
 
 d3.json("../data/DRA_2022_USA_simplified[4.1].topo.json").then(function (data) {
 
+  var democratic = [];
+  var republican = [];
+  var districts = data.objects.boundaries.geometries;
+
+  var seats = [
+    ["democratic"],
+    ["republican"]
+  ];
+
+  for (var i = 0; i < districts.length; i++) {
+    if (districts[i].properties.DemPct > districts[i].properties.RepPct) {
+      democratic.push(districts[i]);
+    } else {
+      republican.push(districts[i]);
+    }
+  }
+
+  seats[0].push(democratic.length);
+  seats[1].push(republican.length);
+
+
+
+
   drawMap(function (d, i) {
-    return choroMargins(d);
+    return choropleths.choroMargins(d);
   });
+
+  chart.drawBar(data, graph, seats, seatCounter);
 
   choroButton.on("click", () =>{
     if (choroButton._groups[0][0].className === "active") {
 
-      g.selectAll("path").remove();
+      map.selectAll("path").remove();
       drawMap(function (d, i) {
-        return choroMargins(d);
+        return choropleths.choroMargins(d);
       });
 
-      choroButton.attr("class", null)
-        .style("background-color", "white")
-        .style("border-color", "#454545")
-        .style("color", "#454545");
+      marginsContent.style("display", "inline");
+      choroButton.attr("class", "inactive");
 
     } else {
 
-      g.selectAll("path").remove();
+      map.selectAll("path").remove();
       drawMap(function (d, i) {
-        return choroDynamic(d);
+        return choropleths.choroDynamic(d);
       });
 
-      choroButton.attr("class", "active")
-        .style("background-color", "#454545")
-        .style("border-color", "#454545")
-        .style("color", "white");
+      marginsContent.style("display", "none");
+      choroButton.attr("class", "active");
 
     }
   });
@@ -66,7 +99,7 @@ d3.json("../data/DRA_2022_USA_simplified[4.1].topo.json").then(function (data) {
 
 
   function drawMap(choro) {
-    g.selectAll("path")
+    map.selectAll("path")
       .data(topojson.feature(data, data.objects.boundaries).features)
       .enter().append("path")
        .attr("d", path)
@@ -104,48 +137,5 @@ d3.json("../data/DRA_2022_USA_simplified[4.1].topo.json").then(function (data) {
        })
        .attr("opacity", choro);
   }
-
-
-
-
-  function choroMargins(district) {
-     var parties = [district.properties.DemPct, district.properties.RepPct];
-     parties.sort(function(a, b) {
-       return b - a;
-     });
-
-     var margin = parties[0] - parties[1];
-
-     if (margin >= 0.15) {
-       return 1;
-     } else {
-       if (margin >= 0.05) {
-         return 0.75;
-       } else {
-         if (margin >= 0.01) {
-           return 0.4;
-         } else {
-           if (margin <= 0.01) {
-               return 0.2;
-           }
-         }
-       }
-     }
-   }
-
-   function choroDynamic(district) {
-     var parties = [district.properties.DemPct, district.properties.RepPct];
-     parties.sort(function(a, b) {
-       return b - a;
-     });
-
-     var margin = parties[0] - parties[1];
-
-     if (margin > 0.05) {
-       return Math.pow(margin, 1.3) + 0.35;
-     } else {
-       return Math.pow(margin, 1.3) + 0.25;
-     }
-   }
 
 });

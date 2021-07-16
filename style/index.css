@@ -15,11 +15,6 @@ body {
   width: 100%;
   left: 0;
 }
-header:hover {
-  transition: 0.3s;
-  background-color: #a6a6a6;
-  color: white;
-}
 
 .header h1 {
   top: 20px;
@@ -37,39 +32,59 @@ header:hover {
   color: inherit;
 }
 
-#choropleth_button {
-  position: relative;
-  font-family: monospace;
-  color: #454545;
-  background-color: white;
-  border-radius: 0;
-  border-color: #454545;
-  border: solid;
-  border-width: 2px;
-  width: 300px;
-  height: 40px;
-  float: right;
-}
-#choropleth_button:hover {
-  transition: 0.15s;
-  background-color: #454545;
-  border-color: #454545;
-  color: white;
-}
-
-#margins {
-  color: #454545;
-  font-size: 15px;
-  line-height: 25px;
-}
-
 .main {
   position: relative;
   margin: auto;
   padding: 10px;
   width: 80%;
   max-width: 1000px;
+}
+
+/* CHORO BUTTON */
+#choropleth_button {
+  border-radius: 0;
+  position: relative;
+  top: 80px;
+  font-family: monospace;
+  border: solid;
+  border-width: 2px;
+  width: 35%;
+  height: 40px;
+  float: right;
+  border-color: #454545;
+  cursor: pointer;
+}
+.inactive {
+  color: #454545;
+  background-color: white;
+}
+#choropleth_button:hover {
+  transition: 0.15s;
+  background-color: #454545;
+  color: white;
+}
+.active {
+  background-color: #454545;
+  color: white;
+}
+
+/* TEXT */
+
+.margins {
+  height: 120px;
+  max-height: 20%;
+}
+#margins_content {
+  color: #454545;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+
+.text {
   padding-top: 0;
+  position: relative;
+  margin-top: 30px;
   line-height: 30px;
   font-size: 20px;
 }
@@ -78,19 +93,23 @@ header:hover {
 .extra-info {
   position: relative;
   margin: auto;
+  left: -30px;
   padding: 10px;
-  width: 80%;
+  padding-bottom: 40px;
+  width: 100%;
   max-width: 1000px;
   text-align: center;
-  margin-bottom: 40px;
+  top: 20px;
+  line-height: 30px;
 }
 .extra-info span {
-  margin: 0 70px 0 70px;
+  margin: 0 30px 0 30px;
 }
 .extra-info a {
   color: #454545;
 }
 
+/* SVG CONTAINERS */
 
 #map_container {
   margin: auto;
@@ -99,8 +118,16 @@ header:hover {
   padding-bottom: 0;
   position: relative;
   width: 1200px;
-  left: 1%;
-  right: 1%;
+  top: 0;
+}
+
+#chart_container {
+  margin: auto;
+  padding: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  position: relative;
+  width: 1000px;
   top: 0;
 }
 
@@ -127,4 +154,54 @@ header:hover {
 .republican {
   fill: #cc0000;
   background-color: #cc0000;
+}
+
+/* BAR  */
+
+#seat_counter {
+  position: relative;
+  bottom: -25px;
+}
+
+#democraticResult {
+  color: #003399;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+#democraticResult span {
+  font-weight: inherit;
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+#republicanResult {
+  float: right;
+  color: #cc0000;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+#republicanResult span {
+  font-weight: inherit;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.majority-div {
+  position: relative;
+  top: 40px;
+}
+.up-arrow {
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid black;
+  position: relative;
+  margin: auto;
+  left: 493.5px;
+}
+#majority-info {
+  text-align: center;
+  position: relative;
 }
