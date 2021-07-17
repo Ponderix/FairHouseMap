@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="description" content="An attempt at fair redistricting for the US House of Representatives.">
     <meta name="keywords" content="Election, Maps, Politics, USA">
     <title>2022 Fair House Map</title>
     <script src="libraries/d3.min.js" charset="utf-8"></script>
     <script src="libraries/topojson.min.js" charset="utf-8"></script>
-    <link>
-  </head>
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+</head>
 
-  <body>
+<body>
     <header class="header">
-      <h1>2022 Fair House Map</h1>
-      <span>Made with <a href="https://davesredistricting.org/maps#home">Dave's Redistricting</a></span>
+        <h1>2022 Fair House Map</h1>
+        <span>Made with <a href="https://davesredistricting.org/maps#home">Dave's Redistricting</a></span>
     </header>
 
     <div id="map_container"></div>
     <div id="chart_container">
-      <div id="seat_counter">
-      </div>
+        <div id="seat_counter">
+        </div>
     </div>
 
 
     <div class="main">
-      <button type="button" class="inactive" id="choropleth_button">Change to a more detailed choropleth.</button>
+        <button type="button" class="inactive" id="choropleth_button">Change to a more detailed choropleth.</button>
 
-      <div class="margins">
-        <div id="margins_content">
-          <span style="font-weight:bold;">Margins:</span><br>
-           more than 15% = safe<br>
-           15%-5% = likely<br>
-           5%-1% = lean<br>
-           less than 1% = tilt<br>
+        <div class="margins">
+            <div id="margins_content">
+                <span style="font-weight:bold;">Margins:</span><br>
+                more than 15% = safe<br>
+                15%-5% = likely<br>
+                5%-1% = lean<br>
+                less than 1% = tilt<br>
+            </div>
         </div>
-      </div>
 
-      <div class="text">
-        <p>A map of the 2022 US House of Representatives if it were redistricted to reflect the popular vote in each state. As far as is known, this map only has 434 seats instead of 435, this could be due to an error in the code or because the maps were drawn with the wrong amounts of districts. This problem will be rectified as soon as time is available.</p>
-        <p>Due to the nature of Dave's Redistricting, the map does not entirely reflect how these districts would have voted in a House election. Rather, each state represents a the general way it has voted within the past few years; on DRA this is the "composite dataset". However it must be noted that in some states the composite dataset is very innacurate and had to be changed to a different election dataset.</p>
-        <p>Whilst making the maps it was made sure that the districts retained a generally pleasing shape. This means that in overwhelmingly partisan states such as California or Oklahoma it was nearly impossible to draw a proportional map.</p>
-      </div>
+        <div class="text">
+            <p>A map of the 2022 US House of Representatives if it were redistricted to reflect the popular vote in each state. As far as is known, this map only has 434 seats instead of 435, this could be due to an error in the code or because the maps were drawn with the wrong amounts of districts. This problem will be rectified as soon as time is available.</p>
+            <p>Due to the nature of Dave's Redistricting, the map does not entirely reflect how these districts would have voted in a House election. Rather, each state represents a the general way it has voted within the past few years; on DRA this is the "composite dataset". However it must be noted that in some states the composite dataset is very innacurate and had to be changed to a different election dataset.</p>
+            <p>Whilst making the maps it was made sure that the districts retained a generally pleasing shape. This means that in overwhelmingly partisan states such as California or Oklahoma it was nearly impossible to draw a proportional map.</p>
+        </div>
 
-      <div class="extra-info">
-        <span id="conditions_notice"><a href="https://github.com/Ponderix/FairHouseMap/blob/main/README.md">Conditions Notice</a></span>
-        <span id="github"><a href="https://github.com/Ponderix/FairHouseMap">GitHub</a></span>
-        <span id="mail"><a href="mailto:bremen.ball@gmail.com?">Mail</a></span>
-        <span id="twitter"><a href="https://twitter.com/ponderix">Twitter</a></span>
-        <span id="copyright">Copyright <a href="https://github.com/Ponderix/FairHouseMap/blob/main/LICENSE">(c) 2021 Ponderix</a></span>
-      </div>
+        <div class="extra-info">
+            <span id="conditions_notice"><a href="https://github.com/Ponderix/FairHouseMap/blob/main/README.md">Conditions Notice</a></span>
+            <span id="github"><a href="https://github.com/Ponderix/FairHouseMap">GitHub</a></span>
+            <span id="mail"><a href="mailto:bremen.ball@gmail.com?">Mail</a></span>
+            <span id="twitter"><a href="https://twitter.com/ponderix">Twitter</a></span>
+            <span id="copyright">Copyright <a href="https://github.com/Ponderix/FairHouseMap/blob/main/LICENSE">(c) 2021 Ponderix</a></span>
+        </div>
     </div>
 
     <script src="script/svg.js" charset="utf-8"></script>
     <script src="script/chart.js" charset="utf-8"></script>
     <script src="script/choropleths.js" charset="utf-8"></script>
     <link rel="stylesheet" href="style/index.css">
-  </body>
+</body>
 
 </html>
