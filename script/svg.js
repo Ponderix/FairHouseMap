@@ -40,7 +40,7 @@ mapSvg.call(zoom).on("dblclick.zoom", null);
 
 
 
-d3.json("../data/DRA_2022_USA_simplified[4.1].topo.json").then(function (data) {
+d3.json("./data/DRA_2022_USA_simplified[4.1].topo.json").then(function (data) {
 
   var democratic = [];
   var republican = [];
